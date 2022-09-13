@@ -3,6 +3,9 @@ uuid = "1757a4a2-e40e-4707-a64d-9cf19d920436"
 authors = ["Cristóbal Armaza"]
 version = "0.1.0"
 
+[deps]
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+
 [compat]
 julia = "1"
 
