@@ -4,7 +4,7 @@
 using Test
 
 @testset "All tests" begin
-    all_tests = ["vacuum"]
+    all_tests = ["neutron_star", "vacuum"]
 
     for name in all_tests
         print("Running $name.jl. ")
