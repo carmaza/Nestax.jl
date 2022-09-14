@@ -1,10 +1,37 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 
+"""
+    NeutronStar(magnetic_moment[0.0, 0.0, 0.5])
+
+A class containing functions depending on neutron star properties.
+
+...
+
+# Members
+
+  - `magnetic_moment::Vector{Float64}`: the Cartesian components of the magnetic
+    moment.
+    ...
+"""
 Base.@kwdef struct NeutronStar{T <: Vector{Float64}}
     magnetic_moment::T = [0.0, 0.0, 0.5]
 end
 
+"""
+    conversion_radius!(radius::AbstractArray{Float64}, angle::AbstractArray{Float64})
+
+The axion-photon conversion radius as a function of the misalignment angle
+between the magnetic axis and the rotation axis.
+
+...
+
+# Parameters
+
+  - `radius::AbstractArray{Float64}`: the conversion radius.
+  - `angle::AbstractArray{Float64}` : the misalignment angle.
+    ...
+"""
 function conversion_radius!(
     radius::AbstractArray{Float64},
     angle::AbstractArray{Float64}
@@ -16,6 +43,24 @@ function conversion_radius!(
     radius[:] = abs.((3 * cos.(angle) .^ 2 .- 1) ./ 2) .^ (1 / 3)
 end
 
+"""
+    conversion_surface!(pos::Matrix{Float64}, theta::Vector{Float64}, phi::Vector{Float64})
+
+The Cartesian points on the axion-photon conversion surface evaluated at the
+given spherical angles.
+
+The ordering convention for spherical coordinates is r, theta, phi.
+
+This function is specialized to no misalignment between the magnetic and
+rotational axes.
+...
+
+# Parameters
+
+  - `pos::Matrix{Float64}`: the Cartesian points on the surface.
+  - `theta::Vector{Float64}, phi::vector{Float64}`: the spherical angles.
+    ...
+"""
 function conversion_surface!(
     pos::Matrix{Float64},
     theta::Vector{Float64},
