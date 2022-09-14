@@ -11,7 +11,6 @@ function test()
     rng = MersenneTwister(seed)
 
     @testset verbose = true "NeutronStar | Seed: $seed" begin
-
         @testset "Class" begin
             magnetic_moment = Random.randn(rng, 3)
             ns = NeutronStar(magnetic_moment)
@@ -31,7 +30,7 @@ function test()
             @test isapprox(rad, rad_expected)
             @test_throws AssertionError conversion_radius!(
                 Random.randn(rng, 3),
-                Random.randn(rng, 4),
+                Random.randn(rng, 4)
             )
         end
 
@@ -49,9 +48,9 @@ function test()
             conversion_radius!(rad, theta)
 
             surf_expected = Matrix{Float64}(undef, n_surf, 3)
-            for k = 1:n_phi
+            for k in 1:n_phi
                 inc = (k - 1) * n_the
-                for j = 1:n_the
+                for j in 1:n_the
                     q = j + inc
                     surf_expected[q, 1] = rad[j] * sin(theta[j]) * cos(phi[k])
                     surf_expected[q, 2] = rad[j] * sin(theta[j]) * sin(phi[k])
@@ -63,7 +62,7 @@ function test()
             @test_throws AssertionError conversion_surface!(
                 Random.randn(rng, 3, 4),
                 Random.randn(rng, 2),
-                Random.randn(rng, 3),
+                Random.randn(rng, 3)
             )
         end
     end
