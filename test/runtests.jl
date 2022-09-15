@@ -3,11 +3,10 @@
 
 using Test
 
-@testset "All tests" begin
+@testset verbose = true "All tests" begin
     all_tests = ["neutron_star", "vacuum"]
 
     for name in all_tests
-        print("Running $name.jl. ")
         include("$name.jl")
     end
 end
