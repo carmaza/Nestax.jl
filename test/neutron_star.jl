@@ -25,7 +25,8 @@ function test()
             rad = Vector{Float64}(undef, n_the)
             conversion_radius!(rad, angle)
 
-            rad_expected = abs.((3 * cos.(angle) .^ 2 .- 1) ./ 2) .^ (1 / 3)
+            rad_expected =
+                abs.((3.0 * cos.(angle) .^ 2.0 .- 1.0) / 2.0) .^ (1.0 / 3.0)
 
             @test isapprox(rad, rad_expected)
             @test_throws AssertionError conversion_radius!(
