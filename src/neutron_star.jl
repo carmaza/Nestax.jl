@@ -40,7 +40,7 @@ function conversion_radius!(
         throw(AssertionError("sizes of `radius` and `angle` are not equal."))
     end
 
-    radius[:] = abs.(0.5 * (3.0 * cos.(angle) .^ 2.0 .- 1)) .^ (1.0 / 3.0)
+    @. radius[:] = abs(0.5 * (3.0 * cos(angle)^2.0 - 1.0))^(1.0 / 3.0)
 end
 
 """
