@@ -8,7 +8,7 @@ include("../src/vacuum.jl")
 
 function test()
     seed = rand(1:(10^10))
-    rng = Random.MersenneTwister(seed)
+    rng = Random.Xoshiro(seed)
 
     @testset verbose = true "Vacuum | Seed: $seed" begin
         N = Random.rand(rng, 2:10)

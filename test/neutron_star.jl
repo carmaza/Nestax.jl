@@ -8,7 +8,7 @@ include("../src/neutron_star.jl")
 
 function test()
     seed = Random.rand(1:(10^10))
-    rng = MersenneTwister(seed)
+    rng = Xoshiro(seed)
 
     @testset verbose = true "NeutronStar | Seed: $seed" begin
         @testset "Class" begin
