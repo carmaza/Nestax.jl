@@ -2,6 +2,7 @@
 # See LICENSE for details.
 
 using Random
+using LinearAlgebra
 using StaticArrays
 using Test
 
@@ -26,6 +27,20 @@ function test()
             cart_expected = SVector{3, Float64}(expected)
 
             @test isapprox(cart, cart_expected)
+        end
+        @testset "RotateAbout" begin
+            v = SVector{3, Float64}(Random.randn(rng, 3))
+            k = SVector{3, Float64}(Random.randn(rng, 3))
+            a = Random.randn(rng)
+
+            v_rot = Euclidean.rotate_about(v, k, a)
+
+            u = k / sqrt(k[1]^2 + k[2]^2 + k[3]^2)
+            v_expected =
+                v * cos(a) +
+                sin(a) * cross(u, v) +
+                u * dot(u, v) * (1.0 - cos(a))
+            @test isapprox(v_rot, v_expected)
         end
     end
 end
