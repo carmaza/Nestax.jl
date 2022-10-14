@@ -23,16 +23,15 @@ function update!(
     x::Vector{SVector{3, Float64}},
     v::Vector{SVector{3, Float64}},
     a::Vector{SVector{3, Float64}};
+    i::UInt64,
     force::Any,
     dt::Float64
 )
     half_dt = 0.5 * dt
-    for i in 1:length(x)
-        v[i] += half_dt * a[i]
-        x[i] += dt * v[i]
-        a[i] = force(x[i])
-        v[i] += half_dt * a[i]
-    end
+    v[i] += half_dt * a[i]
+    x[i] += dt * v[i]
+    a[i] = force(x[i])
+    v[i] += half_dt * a[i]
 end
 
 end

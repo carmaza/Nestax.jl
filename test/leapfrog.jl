@@ -48,7 +48,17 @@ function test()
                 a_updated[i] = a_new
             end
 
-            Leapfrog.update!(x, v, a; force = acceleration, dt = dt)
+            for i in 1:N
+                ind = i % UInt64
+                Leapfrog.update!(
+                    x,
+                    v,
+                    a;
+                    i = ind,
+                    force = acceleration,
+                    dt = dt
+                )
+            end
 
             @test isapprox(x_updated, x)
             @test isapprox(v_updated, v)
