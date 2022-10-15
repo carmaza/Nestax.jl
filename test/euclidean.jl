@@ -44,6 +44,7 @@ function test()
             @test isapprox(v_rot, v_expected)
         end
     end
+    return nothing
 end
 
 test()

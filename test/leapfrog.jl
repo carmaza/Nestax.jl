@@ -73,6 +73,7 @@ function test()
             @test isapprox(e, e_new, atol = 1.e-5, rtol = 1.e-5)
         end
     end
+    return nothing
 end
 
 test()

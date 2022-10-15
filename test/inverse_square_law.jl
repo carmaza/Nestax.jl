@@ -31,6 +31,7 @@ function test()
             @test isapprox(e, e_expected)
         end
     end
+    return nothing
 end
 
 test()

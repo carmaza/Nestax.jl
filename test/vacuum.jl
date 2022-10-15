@@ -30,6 +30,7 @@ function test()
 
         @test Base.isapprox(dw, dw_expected)
     end
+    return nothing
 end
 
 test()

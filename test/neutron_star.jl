@@ -67,6 +67,7 @@ function test()
             )
         end
     end
+    return nothing
 end
 
 test()
