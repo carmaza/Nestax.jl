@@ -6,6 +6,7 @@ using Test
 @testset verbose = true "All tests" begin
     all_tests = [
         "euclidean",
+        "exponential",
         "inverse_square_law",
         "leapfrog",
         "neutron_star",
