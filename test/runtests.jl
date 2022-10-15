@@ -10,6 +10,7 @@ using Test
         "inverse_square_law",
         "leapfrog",
         "neutron_star",
+        "shell",
         "vacuum"
     ]
 
