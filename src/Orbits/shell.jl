@@ -3,9 +3,6 @@
 
 module Shell
 
-using LinearAlgebra
-using StaticArrays
-
 """
     cartesian_from_spherical(r, theta, phi)
 
