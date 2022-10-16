@@ -8,30 +8,35 @@ using StaticArrays
 """
     update!(x, v, a, force, dt)
 
-Update the Cartesian position, velocity, and acceleration of N particles, using
+Update the Cartesian position, velocity, and acceleration of a particle, using
 the syncronized second-order Leapfrog method.
 
 ## Arguments
 
-  - `x::Vector{SVector{3, Float64}}`: the position of the particles.
-  - `v::Vector{SVector{3, Float64}}`: the velocity of the particles.
-  - `a::Vector{SVector{3, Float64}}`: the acceleration of the particles.
+  - `x::SVector{3, Float64}`: the position of the particle.
+  - `v::SVector{3, Float64}`: the velocity of the particle.
+  - `a::SVector{3, Float64}`: the acceleration of the particle.
   - `force::Any`: the function to calculate the acceleration.
   - `dt::Float64`: the timestep used to update the variables.
+
+## Returns
+
+  - `SVector{3, Float64}, SVector{3, Float64}, SVector{3, Float64}`: the new
+    particle's position, velocity, and acceleration.
 """
-function update!(
-    x::Vector{SVector{3, Float64}},
-    v::Vector{SVector{3, Float64}},
-    a::Vector{SVector{3, Float64}};
-    i::UInt64,
+function update(
+    x::SVector{3, Float64},
+    v::SVector{3, Float64},
+    a::SVector{3, Float64};
     force::Any,
     dt::Float64
 )
     half_dt = 0.5 * dt
-    v[i] += half_dt * a[i]
-    x[i] += dt * v[i]
-    a[i] = force(x[i])
-    v[i] += half_dt * a[i]
+    vnew = v + half_dt * a
+    xnew = x + dt * vnew
+    anew = force(xnew)
+    vnew = vnew + half_dt * anew
+    return xnew, vnew, anew
 end
 
 end

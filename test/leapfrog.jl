@@ -49,12 +49,10 @@ function test()
             end
 
             for i in 1:N
-                ind = i % UInt64
-                Leapfrog.update!(
-                    x,
-                    v,
-                    a;
-                    i = ind,
+                x[i], v[i], a[i] = Leapfrog.update(
+                    x[i],
+                    v[i],
+                    a[i];
                     force = acceleration,
                     dt = dt
                 )
