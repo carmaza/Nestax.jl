@@ -19,7 +19,7 @@ function test()
             profile = Exponential
             bounds = [0.1 * k for k in 0:nshells]
 
-            numbers = Vector{Float64}(undef, nshells)
+            numbers = Vector{Int}(undef, nshells)
             Shell.particle_number!(numbers, profile, N, bounds)
 
             fraction = Vector{Float64}(undef, length(bounds))
@@ -27,7 +27,7 @@ function test()
 
             numbers_expected = Vector{Float64}(undef, nshells)
             for j in 1:nshells
-                numbers_expected[j] = N * (fraction[j] - fraction[j + 1])
+                numbers_expected[j] = round(N * (fraction[j] - fraction[j + 1]))
             end
 
             @test isapprox(numbers, numbers_expected)
