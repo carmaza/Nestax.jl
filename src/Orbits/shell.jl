@@ -4,17 +4,18 @@
 module Shell
 
 """
-    cartesian_from_spherical(r, theta, phi)
+    particle_number!(numbers, profile, N, bounds)
 
-Return the Cartesian components of the given spherical coordinates.
+For the given spherical profile, compute the number of particles on each shell
+of given bounds.
 
 ## Arguments
 
-  - `r::Float64, theta::Float64, phi::Float64`: the spherical coordinates.
-
-## Returns
-
-  - `SVector{3, Float}`: the Cartesian coordinates.
+  - `numbers::Vector{Float64}`: the number of particle in each shell.
+  - `profile::Any`: the spherical profile. Must contain a
+    `number_fraction!(fraction, bounds)` function.
+  - `N::UInt`: the total number of particles across all shells.
+  - `bounds::Vector{Float}`: the radial extents of each shell.
 """
 function particle_number!(
     numbers::Vector{Float64},
