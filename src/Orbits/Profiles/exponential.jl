@@ -16,7 +16,9 @@ with bounds r in [r1, r2].
     - `r::Vector{Float64}`: any bound(s) within which to compute the fraction.
 """
 function number_fraction!(frac::Vector{Float64}, r::Vector{Float64})
-    @. frac[:] = exp(-2.0 * r) * (1.0 + 2.0 * r * (1.0 + r))
+    for k in eachindex(frac)
+        frac[k] = exp(-2.0 * r[k]) * (1.0 + 2.0 * r[k] * (1.0 + r[k]))
+    end
 end
 
 end
