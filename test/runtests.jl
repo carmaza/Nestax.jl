@@ -7,6 +7,7 @@ using Test
     all_tests = [
         "euclidean",
         "exponential",
+        "generalized_spiral",
         "inverse_square_law",
         "leapfrog",
         "neutron_star",
