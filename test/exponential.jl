@@ -4,7 +4,7 @@
 using Random
 using Test
 
-include("../src/Orbits/Profiles/exponential.jl")
+include("../src/Orbits/Profiles/Profiles.jl")
 
 function test()
     seed = Random.rand(1:(10^10))
@@ -12,7 +12,7 @@ function test()
 
     @testset verbose = true "Exponential | Seed: $seed" begin
         @testset verbose = true "R90" begin
-            @test isapprox(2.661, Exponential.r90())
+            @test isapprox(2.661, Profiles.Exponential.r90())
         end
 
         @testset verbose = true "Number fraction" begin
@@ -20,7 +20,7 @@ function test()
             r = [0.2 * k for k in 1:N]
 
             frac = Vector{Float64}(undef, N)
-            Exponential.number_fraction!(frac, r)
+            Profiles.Exponential.number_fraction!(frac, r)
 
             frac_expected = Vector{Float64}(undef, N)
             for k in 1:N
