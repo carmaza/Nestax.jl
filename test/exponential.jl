@@ -11,6 +11,10 @@ function test()
     rng = Random.Xoshiro(seed)
 
     @testset verbose = true "Exponential | Seed: $seed" begin
+        @testset verbose = true "R90" begin
+            @test isapprox(2.661, Exponential.r90())
+        end
+
         @testset verbose = true "Number fraction" begin
             N = Random.rand(4:10)
             r = [0.2 * k for k in 1:N]

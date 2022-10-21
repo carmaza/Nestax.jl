@@ -4,6 +4,15 @@
 module Exponential
 
 """
+    r90()
+
+The R_90 radius of the profile.
+"""
+function r90()
+    return 2.661
+end
+
+"""
     number_fraction!(frac, r)
 
 For a spherical distribution of N particles, this function computes f(r),
