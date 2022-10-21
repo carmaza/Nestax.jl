@@ -12,7 +12,6 @@ function test()
 
     @testset verbose = true "Generalized Spiral | Seed: $seed" begin
         N = UInt64(Random.rand(rng, 2:10))
-        println(N)
 
         h = Vector{Float64}(undef, N)
         GeneralizedSpiral._h!(h)
