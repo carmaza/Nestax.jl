@@ -15,6 +15,16 @@ function _phase(h::Float64, N::UInt64)
     return 3.6 / sqrt(N * (1.0 - h^2.0))
 end
 
+"""
+    set_angles!(theta, phi)
+
+Set angles according to the parameterized spiraling scheme introduced by
+Saff & Kuijlaars (1997).
+
+## Arguments
+
+  - `theta::Vector{Float64}, phi::Vector{Float64}`: the spherical angles.
+"""
 function set_angles!(theta::Vector{Float64}, phi::Vector{Float64})
     N = UInt64(size(theta, 1))
 

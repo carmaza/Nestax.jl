@@ -4,7 +4,7 @@
 using Random
 using Test
 
-include("../src/Orbits/generalized_spiral.jl")
+include("../src/Orbits/Distributions/generalized_spiral.jl")
 
 function test()
     seed = Random.rand(1:(10^10))
