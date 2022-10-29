@@ -9,6 +9,27 @@ using StaticArrays
 include("./euclidean.jl")
 include("./shell.jl")
 
+"""
+    set!(x, v, clump, Nshells, write=true)
+
+Set the initial positions and velocities of each particle in the axion clump.
+The effective number of particles to evolve is computed in this function, using
+as input the total number of particles in the clump, as well as their profile
+and distributions. Currently, this function will choose all particles inside of
+R90, i.e. the radius within which 90% of the particles are enclosed.
+
+## Arguments
+
+  - `x::Vector{SVector{3, Float64}}, v::Vector{SVector{3, Float64}}`: the
+    Cartesian positions and velocities of each particle. Note that these must be
+    uninitialized arrays.
+  - `clump`: the clump. Must hold particles' profile and angular distribution on
+    a particular spherical shell.
+  - `Nshells`: the number of shells used to distribute the particles in the
+    clump.
+  - `write`: whether to write to disk the initial position of each particle.
+    (Default: true)
+"""
 function set!(
     x::Vector{SVector{3, Float64}},
     v::Vector{SVector{3, Float64}},
