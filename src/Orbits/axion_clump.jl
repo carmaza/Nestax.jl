@@ -10,7 +10,7 @@ Class representing the properties of an axion clump.
 
 ## Members
 
-  - `gamma::Float64`: the difference between 3 mp mpi/(mp + mpi)^2 and unity.
+  - `gamma::Float64`: equal to 1 - 3 mu md/(mu + md)^2.
   - `fa::Float64`: the PQ symmetry breaking scale, in units of 6e11 GeV.
   - `N:Int`: the number of particles in the clump.
   - `profile::Module`: the spherical profile of the particle density.
