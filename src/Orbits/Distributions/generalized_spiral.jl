@@ -5,9 +5,13 @@ module GeneralizedSpiral
 
 function _h!(h::Vector{Float64})
     N = size(h)[1]
-    pref = 2.0 / (N - 1.0)
-    for l in 1:N
-        h[l] = -1.0 + pref * (l - 1.0)
+    if N == 1
+        h[1] = -1.0
+    else
+        pref = 2.0 / (N - 1.0)
+        for l in 1:N
+            h[l] = -1.0 + pref * (l - 1.0)
+        end
     end
 end
 

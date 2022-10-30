@@ -11,13 +11,15 @@ function test()
     rng = Random.Xoshiro(seed)
 
     @testset verbose = true "Generalized Spiral | Seed: $seed" begin
-        N = UInt64(Random.rand(rng, 2:10))
+        N = UInt64(Random.rand(rng, 1:10))
 
         h = Vector{Float64}(undef, N)
         Distributions.GeneralizedSpiral._h!(h)
 
         @testset verbose = true "Functions h and phi" begin
-            h_expected = [-1.0 + 2.0 * (l - 1.0) / (N - 1.0) for l in 1:N]
+            h_expected =
+                N == 1 ? [-1.0] :
+                [-1.0 + 2.0 * (l - 1.0) / (N - 1.0) for l in 1:N]
             @test isapprox(h, h_expected)
 
             phase = Distributions.GeneralizedSpiral._phase(h[1], N)
