@@ -70,7 +70,7 @@ function set!(
             angle = Random.randn(rng)
             for j in 1:n
                 ind = j + shift
-                x[ind] += Euclidean.rotate_about(
+                x[ind] += Euclidean.rotated_about(
                     Euclidean.cartesian_from_spherical(
                         bounds[k],
                         theta[j],

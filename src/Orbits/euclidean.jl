@@ -9,7 +9,7 @@ using StaticArrays
 """
     cartesian_from_spherical(r, theta, phi)
 
-Return the Cartesian components of the given spherical coordinates.
+Compute the Cartesian components of the given spherical coordinates.
 
 ## Arguments
 
@@ -26,9 +26,9 @@ function cartesian_from_spherical(r::Float64, theta::Float64, phi::Float64)
 end
 
 """
-    rotate_about(v, k, a)
+    rotated_about(v, k, a)
 
-Rotate the given vector using Rodrigues' axis-angle formula.
+Compute the result of rotating a vector using Rodrigues' axis-angle formula.
 
 ## Arguments
 
@@ -38,9 +38,9 @@ Rotate the given vector using Rodrigues' axis-angle formula.
 
 ## returns
 
-  - `SVector{3, Float64}`: the vector after its rotated.
+  - `SVector{3, Float64}`: the resulting vector.
 """
-function rotate_about(
+function rotated_about(
     v::SVector{3, Float64},
     k::SVector{3, Float64},
     a::Float64
