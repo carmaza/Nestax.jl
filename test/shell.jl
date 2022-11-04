@@ -4,8 +4,8 @@
 using Random
 using Test
 
-include("../src/Axions/Profiles/exponential.jl")
-include("../src/Axions/shell.jl")
+include("../src/Axion/Profiles/exponential.jl")
+include("../src/Axion/shell.jl")
 
 function test()
     seed = Random.rand(1:(10^10))

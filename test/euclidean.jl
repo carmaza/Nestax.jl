@@ -6,7 +6,7 @@ using LinearAlgebra
 using StaticArrays
 using Test
 
-include("../src/Axions/Orbits/euclidean.jl")
+include("../src/Axion/Orbits/euclidean.jl")
 
 function test()
     seed = Random.rand(1:(10^10))
