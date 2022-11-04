@@ -13,20 +13,19 @@ function r90()
 end
 
 """
-    number_fraction!(frac, r)
+    particle_number!(n, r)
 
-For a spherical distribution of N particles, this function computes f(r),
-defined such that there are n = N * (f(r1) - f(r2)) particles in the shell
-with bounds r in [r1, r2].
+For a spherical distribution of N particles, this function computes n(r),
+the number of particles enclosed in a radius r.
 
 ## Arguments
 
-    - `frac::Vector{Float64}`: the fraction of particles.
-    - `r::Vector{Float64}`: any bound(s) within which to compute the fraction.
+    - `n::Vector{Float64}`: the number of particles.
+    - `r::Vector{Float64}`: the radius of the sphere enclosing the particles.
 """
-function number_fraction!(frac::Vector{Float64}, r::Vector{Float64})
-    for k in eachindex(frac)
-        frac[k] = exp(-2.0 * r[k]) * (1.0 + 2.0 * r[k] * (1.0 + r[k]))
+function particle_number!(n::Vector{Float64}, r::Vector{Float64})
+    for k in eachindex(n)
+        n[k] = 1.0 - exp(-2.0 * r[k]) * (1.0 + 2.0 * r[k] * (1.0 + r[k]))
     end
 end
 

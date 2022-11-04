@@ -13,7 +13,7 @@ function test()
 
     @testset verbose = true "Shell | Seed: $seed" begin
         @testset verbose = true "Particle Number" begin
-            N = UInt64(Random.rand(rng, 4:10))
+            N = UInt64(Random.rand(rng, 100:1000))
             nshells = Random.rand(rng, 3:10)
 
             profile = Exponential
@@ -23,11 +23,11 @@ function test()
             Shell.particle_number!(numbers, profile, N, bounds)
 
             fraction = Vector{Float64}(undef, length(bounds))
-            profile.number_fraction!(fraction, bounds)
+            profile.particle_number!(fraction, bounds)
 
             numbers_expected = Vector{Float64}(undef, nshells)
             for j in 1:nshells
-                numbers_expected[j] = round(N * (fraction[j] - fraction[j + 1]))
+                numbers_expected[j] = round(N * (fraction[j + 1] - fraction[j]))
             end
 
             @test isapprox(numbers, numbers_expected)

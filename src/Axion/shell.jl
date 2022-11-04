@@ -24,9 +24,9 @@ function particle_number!(
     bounds::Vector{Float64}
 )
     fraction = Vector{Float64}(undef, length(bounds))
-    profile.number_fraction!(fraction, bounds)
+    profile.particle_number!(fraction, bounds)
     for k in eachindex(numbers)
-        numbers[k] = round(N * (fraction[k] - fraction[k + 1]))
+        numbers[k] = round(N * (fraction[k + 1] - fraction[k]))
     end
 end
 

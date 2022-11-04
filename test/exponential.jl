@@ -15,20 +15,20 @@ function test()
             @test isapprox(2.661, Profiles.Exponential.r90())
         end
 
-        @testset verbose = true "Number fraction" begin
+        @testset verbose = true "Particle number" begin
             N = Random.rand(4:10)
             r = [0.2 * k for k in 1:N]
 
-            frac = Vector{Float64}(undef, N)
-            Profiles.Exponential.number_fraction!(frac, r)
+            n = Vector{Float64}(undef, N)
+            Profiles.Exponential.particle_number!(n, r)
 
-            frac_expected = Vector{Float64}(undef, N)
+            n_expected = Vector{Float64}(undef, N)
             for k in 1:N
-                frac_expected[k] =
-                    exp(-2.0 * r[k]) * (1.0 + 2.0 * r[k] + 2.0 * r[k]^2.0)
+                n_expected[k] =
+                    1.0 - exp(-2.0 * r[k]) * (1.0 + 2.0 * r[k] + 2.0 * r[k]^2.0)
             end
 
-            @test isapprox(frac, frac_expected)
+            @test isapprox(n, n_expected)
         end
     end
     return nothing
