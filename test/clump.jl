@@ -7,13 +7,13 @@ using Test
 
 include("../src/Axions/Distributions/Distributions.jl")
 include("../src/Axions/Profiles/Profiles.jl")
-include("../src/Axions/axion_clump.jl")
+include("../src/Axions/clump.jl")
 
 function test()
     seed = Random.rand(1:(10^10))
     rng = Xoshiro(seed)
 
-    @testset verbose = true "Axion Clump | Seed: $seed" begin
+    @testset verbose = true "Clump | Seed: $seed" begin
         @testset "Class" begin
             gamma = Random.randn(rng)
             fa = Random.randn(rng)
@@ -23,15 +23,8 @@ function test()
             position = SVector{3, Float64}(Random.randn(rng, 3))
             velocity = SVector{3, Float64}(Random.randn(rng, 3))
 
-            clump = AxionClump(
-                gamma,
-                fa,
-                N,
-                profile,
-                distribution,
-                position,
-                velocity
-            )
+            clump =
+                Clump(gamma, fa, N, profile, distribution, position, velocity)
 
             @test isapprox(gamma, clump.gamma)
             @test isapprox(fa, clump.fa)

@@ -4,7 +4,7 @@
 using StaticArrays
 
 """
-    AxionClump(gamma, fa, N, profile, distribution, position, velocity)
+    Clump(gamma, fa, N, profile, distribution, position, velocity)
 
 Class representing the properties of an axion clump.
 
@@ -18,7 +18,7 @@ Class representing the properties of an axion clump.
   - `position::SVector{3, Float64}`: the initial position in Cartesian space.
   - `velocity::SVector{3, Float64}`: the initial velocity in Cartesian space.
 """
-Base.@kwdef struct AxionClump
+Base.@kwdef struct Clump
     gamma::Float64
     fa::Float64
     N::Int

@@ -5,7 +5,7 @@ using Test
 
 @testset verbose = true "All tests" begin
     all_tests = [
-        "axion_clump",
+        "clump",
         "euclidean",
         "exponential",
         "generalized_spiral",
