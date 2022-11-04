@@ -13,6 +13,23 @@ function r90()
 end
 
 """
+    particle_density!(d, r)
+
+For a spherical distribution of N particles, this function computes the density
+of particles at a radial coordinate r.
+
+## Arguments
+
+    - `d::Vector{Float64}`: the density of particles.
+    - `r::Vector{Float64}`: the radial coordinate.
+"""
+function particle_density!(d::Vector{Float64}, r::Vector{Float64})
+    for k in eachindex(d)
+        d[k] = exp(-2.0 * r[k]) / pi
+    end
+end
+
+"""
     particle_number!(n, r)
 
 For a spherical distribution of N particles, this function computes n(r),

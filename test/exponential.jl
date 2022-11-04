@@ -15,6 +15,21 @@ function test()
             @test isapprox(2.661, Profiles.Exponential.r90())
         end
 
+        @testset verbose = true "Particle density" begin
+            N = Random.rand(4:10)
+            r = Random.randn(rng, N)
+
+            d = Vector{Float64}(undef, N)
+            Profiles.Exponential.particle_density!(d, r)
+
+            d_expected = Vector{Float64}(undef, N)
+            for k in 1:N
+                d_expected[k] = exp(-2.0 * r[k]) / pi
+            end
+
+            @test isapprox(d, d_expected)
+        end
+
         @testset verbose = true "Particle number" begin
             N = Random.rand(4:10)
             r = [0.2 * k for k in 1:N]
