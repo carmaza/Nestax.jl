@@ -5,9 +5,9 @@ using Random
 using StaticArrays
 using Test
 
-include("../src/Orbits/Distributions/Distributions.jl")
-include("../src/Orbits/Profiles/Profiles.jl")
-include("../src/Orbits/axion_clump.jl")
+include("../src/Axions/Orbits/Distributions/Distributions.jl")
+include("../src/Axions/Orbits/Profiles/Profiles.jl")
+include("../src/Axions/Orbits/axion_clump.jl")
 
 function test()
     seed = Random.rand(1:(10^10))

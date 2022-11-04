@@ -4,8 +4,8 @@
 using Random
 using Test
 
-include("../src/Orbits/Profiles/exponential.jl")
-include("../src/Orbits/shell.jl")
+include("../src/Axions/Orbits/Profiles/exponential.jl")
+include("../src/Axions/Orbits/shell.jl")
 
 function test()
     seed = Random.rand(1:(10^10))

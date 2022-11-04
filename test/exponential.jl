@@ -4,7 +4,7 @@
 using Random
 using Test
 
-include("../src/Orbits/Profiles/Profiles.jl")
+include("../src/Axions/Orbits/Profiles/Profiles.jl")
 
 function test()
     seed = Random.rand(1:(10^10))

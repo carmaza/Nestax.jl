@@ -6,8 +6,8 @@ using LinearAlgebra
 using StaticArrays
 using Test
 
-include("../src/Orbits/inverse_square_law.jl")
-include("../src/Orbits/leapfrog.jl")
+include("../src/Axions/Orbits/inverse_square_law.jl")
+include("../src/Axions/Orbits/leapfrog.jl")
 
 function test()
     seed = Random.rand(1:(10^10))
