@@ -7,7 +7,7 @@ using Random
 using StaticArrays
 
 include("./euclidean.jl")
-include("./shell.jl")
+include("../shell.jl")
 
 """
     set!(x, v, clump, Nshells, write=true)
