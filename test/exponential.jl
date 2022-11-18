@@ -12,7 +12,7 @@ function test()
 
     @testset verbose = true "Exponential | Seed: $seed" begin
         @testset verbose = true "R90" begin
-            @test isapprox(2.661, Profiles.Exponential.r90())
+            @test isapprox(2.661160168917105, Profiles.Exponential.r90())
         end
 
         @testset verbose = true "Particle density" begin

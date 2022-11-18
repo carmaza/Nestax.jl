@@ -9,7 +9,7 @@ module Exponential
 The R_90 radius of the profile.
 """
 function r90()
-    return 2.661
+    return 2.661160168917105
 end
 
 """
