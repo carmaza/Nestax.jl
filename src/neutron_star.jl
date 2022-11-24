@@ -10,12 +10,14 @@ Class representing a neutron star.
 
 ## Members
 
+  - `mass::Float64`: the mass, in solar masses.
   - `angular_velocity::SVector{3, Float64}`: the Cartesian components of the
     angular velocity.
   - `magnetic_moment::SVector{3, Float64}`: the Cartesian components of the
     magnetic moment.
 """
 Base.@kwdef struct NeutronStar{T <: SVector{3, Float64}}
+    mass::Float64
     angular_velocity::T
     magnetic_moment::T
 end
