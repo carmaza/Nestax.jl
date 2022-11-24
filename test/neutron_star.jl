@@ -13,10 +13,12 @@ function test()
 
     @testset verbose = true "NeutronStar | Seed: $seed" begin
         @testset "Class" begin
+            angular_velocity = SVector{3, Float64}(Random.randn(rng, 3))
             magnetic_moment = SVector{3, Float64}(Random.randn(rng, 3))
-            ns = NeutronStar(magnetic_moment)
+            ns = NeutronStar(angular_velocity, magnetic_moment)
 
             @test isa(ns, NeutronStar)
+            @test isapprox(angular_velocity, ns.angular_velocity)
             @test isapprox(magnetic_moment, ns.magnetic_moment)
         end
 
