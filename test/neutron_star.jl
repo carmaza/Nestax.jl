@@ -2,6 +2,7 @@
 # See LICENSE for details.
 
 using Random
+using StaticArrays
 using Test
 
 include("../src/neutron_star.jl")
@@ -12,7 +13,7 @@ function test()
 
     @testset verbose = true "NeutronStar | Seed: $seed" begin
         @testset "Class" begin
-            magnetic_moment = Random.randn(rng, 3)
+            magnetic_moment = SVector{3, Float64}(Random.randn(rng, 3))
             ns = NeutronStar(magnetic_moment)
 
             @test isa(ns, NeutronStar)

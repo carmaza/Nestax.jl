@@ -1,6 +1,8 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 
+using StaticArrays
+
 """
     NeutronStar(magnetic_moment)
 
@@ -8,10 +10,10 @@ Class representing a neutron star.
 
 ## Members
 
-  - `magnetic_moment::Vector{Float64}`: the Cartesian components of the magnetic
-    moment. Default: [0.0, 0.0, 0.5]
+  - `magnetic_moment::SVector{3, Float64}`: the Cartesian components of the
+    magnetic moment. Default: [0.0, 0.0, 0.5]
 """
-Base.@kwdef struct NeutronStar{T <: Vector{Float64}}
+Base.@kwdef struct NeutronStar{T <: SVector{3, Float64}}
     magnetic_moment::T = [0.0, 0.0, 0.5]
 end
 
