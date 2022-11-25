@@ -12,6 +12,7 @@ Class representing a neutron star.
 ## Members
 
   - `mass::Float64`: the mass, in solar masses.
+  - `radius::Float64`: the radius, in kilometers.
   - `period::Float64`: the rotational period, in seconds.
   - `rotation_axis::SVector{3, Float64}`: the Cartesian components of the
     direction of the angular velocity. If not unit, this vector will be
@@ -21,6 +22,7 @@ Class representing a neutron star.
 """
 Base.@kwdef struct NeutronStar{T <: SVector{3, Float64}}
     mass::Float64
+    radius::Float64
     period::Float64
     rotation_axis::T
     magnetic_moment::T
@@ -28,6 +30,7 @@ Base.@kwdef struct NeutronStar{T <: SVector{3, Float64}}
 
     function NeutronStar{T}(
         mass::Float64,
+        radius::Float64,
         period::Float64,
         rotation_axis::T,
         magnetic_moment::T
@@ -37,6 +40,7 @@ Base.@kwdef struct NeutronStar{T <: SVector{3, Float64}}
             (2.0 * pi / period) * rotation_axis / norm(rotation_axis)
         return new(
             mass,
+            radius,
             period,
             rotation_axis,
             magnetic_moment,
@@ -47,11 +51,12 @@ end
 
 NeutronStar(
     mass::Float64,
+    radius::Float64,
     period::Float64,
     rotation_axis::T,
     magnetic_moment::T
 ) where {T <: SVector{3, Float64}} =
-    NeutronStar{T}(mass, period, rotation_axis, magnetic_moment)
+    NeutronStar{T}(mass, radius, period, rotation_axis, magnetic_moment)
 
 """
     conversion_radius!(radius, angle)

@@ -15,13 +15,21 @@ function test()
     @testset verbose = true "NeutronStar | Seed: $seed" begin
         @testset "Class" begin
             mass = Random.rand(rng)
+            radius = Random.rand(rng)
             period = Random.rand(rng)
             unn_rotation_axis = SVector{3, Float64}(Random.randn(rng, 3))
             magnetic_moment = SVector{3, Float64}(Random.randn(rng, 3))
-            ns = NeutronStar(mass, period, unn_rotation_axis, magnetic_moment)
+            ns = NeutronStar(
+                mass,
+                radius,
+                period,
+                unn_rotation_axis,
+                magnetic_moment
+            )
 
             @test isa(ns, NeutronStar)
             @test isapprox(mass, ns.mass)
+            @test isapprox(radius, ns.radius)
             @test isapprox(period, ns.period)
             @test isapprox(
                 unn_rotation_axis / norm(unn_rotation_axis),
