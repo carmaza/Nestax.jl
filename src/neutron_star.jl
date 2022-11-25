@@ -1,6 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 
+using LinearAlgebra
 using StaticArrays
 
 """
@@ -11,16 +12,46 @@ Class representing a neutron star.
 ## Members
 
   - `mass::Float64`: the mass, in solar masses.
-  - `angular_velocity::SVector{3, Float64}`: the Cartesian components of the
-    angular velocity.
+  - `period::Float64`: the rotational period, in seconds.
+  - `rotation_axis::SVector{3, Float64}`: the Cartesian components of the
+    direction of the angular velocity. If not unit, this vector will be
+    normalized internally in the constructor.
   - `magnetic_moment::SVector{3, Float64}`: the Cartesian components of the
     magnetic moment.
 """
 Base.@kwdef struct NeutronStar{T <: SVector{3, Float64}}
     mass::Float64
-    angular_velocity::T
+    period::Float64
+    rotation_axis::T
     magnetic_moment::T
+    angular_velocity::T
+
+    function NeutronStar{T}(
+        mass::Float64,
+        period::Float64,
+        rotation_axis::T,
+        magnetic_moment::T
+    ) where {T <: SVector{3, Float64}}
+        rotation_axis = rotation_axis / norm(rotation_axis)
+        angular_velocity =
+            (2.0 * pi / period) * rotation_axis / norm(rotation_axis)
+        return new(
+            mass,
+            period,
+            rotation_axis,
+            magnetic_moment,
+            angular_velocity
+        )
+    end
 end
+
+NeutronStar(
+    mass::Float64,
+    period::Float64,
+    rotation_axis::T,
+    magnetic_moment::T
+) where {T <: SVector{3, Float64}} =
+    NeutronStar{T}(mass, period, rotation_axis, magnetic_moment)
 
 """
     conversion_radius!(radius, angle)

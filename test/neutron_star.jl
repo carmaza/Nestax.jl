@@ -1,6 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 
+using LinearAlgebra
 using Random
 using StaticArrays
 using Test
@@ -14,14 +15,20 @@ function test()
     @testset verbose = true "NeutronStar | Seed: $seed" begin
         @testset "Class" begin
             mass = Random.rand(rng)
-            angular_velocity = SVector{3, Float64}(Random.randn(rng, 3))
+            period = Random.rand(rng)
+            unn_rotation_axis = SVector{3, Float64}(Random.randn(rng, 3))
             magnetic_moment = SVector{3, Float64}(Random.randn(rng, 3))
-            ns = NeutronStar(mass, angular_velocity, magnetic_moment)
+            ns = NeutronStar(mass, period, unn_rotation_axis, magnetic_moment)
 
             @test isa(ns, NeutronStar)
             @test isapprox(mass, ns.mass)
-            @test isapprox(angular_velocity, ns.angular_velocity)
+            @test isapprox(period, ns.period)
+            @test isapprox(
+                unn_rotation_axis / norm(unn_rotation_axis),
+                ns.rotation_axis
+            )
             @test isapprox(magnetic_moment, ns.magnetic_moment)
+            @test isapprox((2.0 * pi / period), norm(ns.angular_velocity))
         end
 
         @testset "ConversionRadius" begin
