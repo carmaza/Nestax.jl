@@ -9,6 +9,7 @@ using Test
         "euclidean",
         "exponential",
         "generalized_spiral",
+        "hyperbolic_secant",
         "inverse_square_law",
         "leapfrog",
         "linear_exponential",
