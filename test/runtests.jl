@@ -11,6 +11,7 @@ using Test
         "generalized_spiral",
         "inverse_square_law",
         "leapfrog",
+        "linear_exponential",
         "neutron_star",
         "shell",
         "vacuum"

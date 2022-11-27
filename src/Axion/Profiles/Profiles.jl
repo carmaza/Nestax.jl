@@ -4,5 +4,6 @@
 module Profiles
 
 include("./exponential.jl")
+include("./linear_exponential.jl")
 
 end
