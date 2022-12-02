@@ -36,8 +36,7 @@ Base.@kwdef struct NeutronStar{T <: SVector{3, Float64}}
         magnetic_moment::T
     ) where {T <: SVector{3, Float64}}
         rotation_axis = rotation_axis / norm(rotation_axis)
-        angular_velocity =
-            (2.0 * pi / period) * rotation_axis / norm(rotation_axis)
+        angular_velocity = (2.0 * pi / period) * rotation_axis
         return new(
             mass,
             radius,
