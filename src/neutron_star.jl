@@ -5,7 +5,7 @@ using LinearAlgebra
 using StaticArrays
 
 """
-    NeutronStar(magnetic_moment)
+    NeutronStar(mass, radius, period, rotation_axis, magnetic_moment)
 
 Class representing a neutron star.
 
