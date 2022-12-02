@@ -18,13 +18,13 @@ function test()
             radius = Random.rand(rng)
             period = Random.rand(rng)
             unn_rotation_axis = SVector{3, Float64}(Random.randn(rng, 3))
-            magnetic_moment = SVector{3, Float64}(Random.randn(rng, 3))
+            dipole_moment = SVector{3, Float64}(Random.randn(rng, 3))
             ns = NeutronStar(
                 mass,
                 radius,
                 period,
                 unn_rotation_axis,
-                magnetic_moment
+                dipole_moment
             )
 
             @test isa(ns, NeutronStar)
@@ -35,7 +35,7 @@ function test()
                 unn_rotation_axis / norm(unn_rotation_axis),
                 ns.rotation_axis
             )
-            @test isapprox(magnetic_moment, ns.magnetic_moment)
+            @test isapprox(dipole_moment, ns.dipole_moment)
             @test isapprox((2.0 * pi / period), norm(ns.angular_velocity))
         end
 

@@ -5,7 +5,7 @@ using LinearAlgebra
 using StaticArrays
 
 """
-    NeutronStar(mass, radius, period, rotation_axis, magnetic_moment)
+    NeutronStar(mass, radius, period, rotation_axis, dipole_moment)
 
 Class representing a neutron star.
 
@@ -17,7 +17,7 @@ Class representing a neutron star.
   - `rotation_axis::SVector{3, Float64}`: the Cartesian components of the
     direction of the angular velocity. If not unit, this vector will be
     normalized internally in the constructor.
-  - `magnetic_moment::SVector{3, Float64}`: the Cartesian components of the
+  - `dipole_moment::SVector{3, Float64}`: the Cartesian components of the
     magnetic moment.
 """
 Base.@kwdef struct NeutronStar{T <: SVector{3, Float64}}
@@ -25,7 +25,7 @@ Base.@kwdef struct NeutronStar{T <: SVector{3, Float64}}
     radius::Float64
     period::Float64
     rotation_axis::T
-    magnetic_moment::T
+    dipole_moment::T
     angular_velocity::T
 
     function NeutronStar{T}(
@@ -33,7 +33,7 @@ Base.@kwdef struct NeutronStar{T <: SVector{3, Float64}}
         radius::Float64,
         period::Float64,
         rotation_axis::T,
-        magnetic_moment::T
+        dipole_moment::T
     ) where {T <: SVector{3, Float64}}
         rotation_axis = rotation_axis / norm(rotation_axis)
         angular_velocity = (2.0 * pi / period) * rotation_axis
@@ -42,7 +42,7 @@ Base.@kwdef struct NeutronStar{T <: SVector{3, Float64}}
             radius,
             period,
             rotation_axis,
-            magnetic_moment,
+            dipole_moment,
             angular_velocity
         )
     end
@@ -53,9 +53,9 @@ NeutronStar(
     radius::Float64,
     period::Float64,
     rotation_axis::T,
-    magnetic_moment::T
+    dipole_moment::T
 ) where {T <: SVector{3, Float64}} =
-    NeutronStar{T}(mass, radius, period, rotation_axis, magnetic_moment)
+    NeutronStar{T}(mass, radius, period, rotation_axis, dipole_moment)
 
 """
     conversion_radius!(radius, angle)
