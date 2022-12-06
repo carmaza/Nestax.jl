@@ -6,8 +6,8 @@ import numpy as np
 
 class NeutronStar:
 
-    def __init__(self, mass, radius, rotation_period, rotation_axis,
-                 b_zero, magnetic_axis):
+    def __init__(self, mass, radius, rotation_period, rotation_axis, b_zero,
+                 magnetic_axis):
         self._mass = mass
         self._radius = radius
         self._rotation_period = rotation_period
