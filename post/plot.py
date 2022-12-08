@@ -40,7 +40,7 @@ def plot(axion_mass,
     axvol = figvol.add_subplot(projection='3d')
 
     # Figure holding 2d projections.
-    figproj, axproj = plt.subplots(1, 3, sharey=True, figsize=(10, 3))
+    figproj, axproj = plt.subplots(1, 3, sharey=True, figsize=(12, 3.5))
 
     dt = total_time / Nt
     for i in range(Nt):
@@ -84,15 +84,28 @@ def plot(axion_mass,
         plt.figure(figvol)
         plt.savefig("img/convsurf/vol{}.png".format(time.id),
                     bbox_inches='tight',
-                    dpi=600)
+                    dpi=200)
 
         axvol.clear()
 
         if plot_proj:
 
-            axproj[0].contourf(x_convsurf, y_convsurf, z_convsurf, levels=60)
-            axproj[1].contourf(y_convsurf, z_convsurf, x_convsurf, levels=60)
-            axproj[2].contourf(x_convsurf, z_convsurf, y_convsurf, levels=60)
+            cs = [[], [], []]
+            cs[0] = axproj[0].contourf(x_convsurf,
+                                       y_convsurf,
+                                       z_convsurf,
+                                       levels=60)
+            cs[1] = axproj[1].contourf(y_convsurf,
+                                       z_convsurf,
+                                       x_convsurf,
+                                       levels=60)
+            cs[2] = axproj[2].contourf(x_convsurf,
+                                       z_convsurf,
+                                       y_convsurf,
+                                       levels=60)
+            for c in cs:
+                for col in c.collections:
+                    col.set_rasterized(True)
 
             axproj[0].set_xlabel("x [km]")
             axproj[0].set_ylabel("y [km]")
@@ -102,11 +115,9 @@ def plot(axion_mass,
             axproj[2].set_ylabel("z [km]")
 
             for ax in axproj:
-                ax.grid(linewidth=0.3, zorder=0)
                 ax.set_xlim(limits)
                 ax.set_ylim(limits)
                 ax.set_aspect('equal')
-                ax.set_axisbelow(True)
 
             # So surface rotates in the x-z plane with the correct helicity.
             axproj[2].invert_xaxis()
@@ -117,7 +128,7 @@ def plot(axion_mass,
             plt.figure(figproj)
             plt.savefig("img/convsurf/proj{}.png".format(time.id),
                         bbox_inches='tight',
-                        dpi=600)
+                        dpi=300)
 
             for ax in axproj:
                 ax.clear()
