@@ -5,6 +5,24 @@ import numpy as np
 
 
 class NeutronStar:
+    """
+    A neutron star.
+
+    Parameters
+    ----------
+
+    `mass, radius` : float, float
+    The mass in solar units, the radius in kilometers.
+
+    `rotation_period, rotation_axis` : float, array_like
+    The rotation period in seconds, the rotation axis. If not normalized, the
+    rotation axis will be normalized internally.
+
+    `b_zero, magnetic_axis` : float, array_like
+    A reference magnetic field strength, the magnetic field axis. If not
+    normalized, the magnetic field axis will be normalized internally.
+
+    """
 
     def __init__(self, mass, radius, rotation_period, rotation_axis, b_zero,
                  magnetic_axis):
