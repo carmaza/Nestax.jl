@@ -3,6 +3,21 @@
 
 
 class Particle:
+    """
+    Dynamical properties of a particle.
+
+    Parameters
+    ----------
+
+    `particle_id` : string
+    A unique ID.
+
+    `position_on_convsurf` : array_like
+    The position of the particle on the conversion surface.
+
+    `distance_to_origin` : float
+    The Euclidean distance to the coordinate origin.
+    """
 
     def __init__(self, particle_id, position_on_convsurf, distance_to_origin):
         self._id = particle_id
