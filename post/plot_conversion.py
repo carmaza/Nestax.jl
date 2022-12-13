@@ -5,10 +5,9 @@ import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as axes3d
 import numpy as np
 
-from tempo import Time
 from conversion import Conversion
 from neutron_star import NeutronStar
-
+from tempo import Time
 
 def plot(axion_mass,
          neutron_star,
