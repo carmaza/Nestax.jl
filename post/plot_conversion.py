@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as axes3d
 import numpy as np
 
-from chrono import Time
+from tempo import Time
 from conversion import Conversion
 from neutron_star import NeutronStar
 

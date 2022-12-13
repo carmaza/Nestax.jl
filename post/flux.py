@@ -2,7 +2,7 @@
 # See LICENSE for details.
 
 from particle import Particle
-from chrono import Interval
+from tempo import Interval
 
 
 class Flux:
