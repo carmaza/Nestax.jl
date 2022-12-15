@@ -9,6 +9,7 @@ from conversion import Conversion
 from neutron_star import NeutronStar
 from tempo import Time
 
+
 def plot(axion_mass,
          neutron_star,
          total_time,
