@@ -65,4 +65,4 @@ class Interval:
         Whether the value of `time` lies in this time interval.
 
         """
-        return time.value >= self._extents[0] and time.value < self._extents[1]
+        return time.value >= self._extents[0] and time.value <= self._extents[1]
