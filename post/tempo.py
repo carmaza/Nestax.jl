@@ -29,6 +29,26 @@ class Time:
     def value(self):
         return self._value
 
+    def within_interval(self, interval):
+        """
+        Whether self `value` is contained in the given interval.
+
+        Parameters
+        ----------
+
+        `interval` : obj
+        The `Interval` object whose extents are tested.
+
+        Returns
+        -------
+
+        out : bool
+        Whether the self value lies in the given interval.
+
+        """
+        return self._value >= interval.extents[
+            0] and self._value <= interval.extents[1]
+
 
 class Interval:
     """
@@ -47,22 +67,3 @@ class Interval:
     @property
     def extents(self):
         return self._extents
-
-    def within_extents(self, time):
-        """
-        Whether the given `time` value is contained in this interval.
-
-        Parameters
-        ----------
-
-        `time` : obj
-        The `Time` object whose value is being tested.
-
-        Returns
-        -------
-
-        out : bool
-        Whether the value of `time` lies in this time interval.
-
-        """
-        return time.value >= self._extents[0] and time.value <= self._extents[1]
