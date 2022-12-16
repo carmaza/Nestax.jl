@@ -10,7 +10,7 @@ include("./euclidean.jl")
 include("../shell.jl")
 
 """
-    set!(x, v, clump, Nshells, write=true)
+    set!(x, v, clump, Nshells, seed, write=true)
 
 Set the initial positions and velocities of each particle in the axion clump.
 The effective number of particles to evolve is computed in this function, using
@@ -27,6 +27,8 @@ R90, i.e. the radius within which 90% of the particles are enclosed.
     a particular spherical shell.
   - `Nshells`: the number of shells used to distribute the particles in the
     clump.
+  - `seed::Int`
+    The seed used to randomize the relative orientation among shells.
   - `write`: whether to write to disk the initial position of each particle.
     (Default: true)
 """
@@ -35,6 +37,7 @@ function set!(
     v::Vector{SVector{3, Float64}},
     clump,
     Nshells,
+    seed,
     write = true
 )
     N = clump.N % UInt64
@@ -56,7 +59,6 @@ function set!(
         push!(x, clump.position)
     end
 
-    seed = Random.rand(1:(10^10))
     rng = Random.Xoshiro(seed)
     shift = 0
     for k in eachindex(numbers)
