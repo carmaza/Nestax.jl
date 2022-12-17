@@ -5,7 +5,7 @@ using Random
 using StaticArrays
 using Test
 
-include("../src/Axion/Distributions/Distributions.jl")
+include("../src/Axion/Orbits/generalized_spiral.jl")
 include("../src/Axion/Profiles/Profiles.jl")
 include("../src/Axion/clump.jl")
 
@@ -19,7 +19,7 @@ function test()
             fa = Random.randn(rng)
             N = Random.rand(100:1000)
             profile = Profiles.Exponential
-            distribution = Distributions.GeneralizedSpiral
+            distribution = GeneralizedSpiral
             position = SVector{3, Float64}(Random.randn(rng, 3))
             velocity = SVector{3, Float64}(Random.randn(rng, 3))
 
