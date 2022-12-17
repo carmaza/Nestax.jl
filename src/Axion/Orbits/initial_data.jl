@@ -46,6 +46,13 @@ function set!(
     numbers = Vector{Int}(undef, Nshells)
     Shell.particle_number!(numbers, clump.profile, N, bounds)
 
+    println("Particles in each shell of the AC:")
+    println("$numbers")
+
+    sep = 3.6 / sqrt(findmax(numbers)[1])
+    println("sep = $sep")
+    println("dr = $dr")
+
     # Assign radial coordinate of each shell to outer bound.
     # TO-DO: maybe assign bounds average instead?
     popfirst!(bounds) # Delete origin.
