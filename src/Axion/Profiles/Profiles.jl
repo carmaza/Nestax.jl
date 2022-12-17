@@ -5,7 +5,7 @@ module Profiles
 
 include("./eighth_power.jl")
 include("./exponential.jl")
+include("./exponential_linear.jl")
 include("./hyperbolic_secant.jl")
-include("./linear_exponential.jl")
 
 end

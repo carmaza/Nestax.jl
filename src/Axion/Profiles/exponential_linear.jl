@@ -1,7 +1,7 @@
 # Distibuted unde the MIT License.
 # See LICENSE for details.
 
-module LinearExponential
+module ExponentialLinear
 
 """
     r90()

@@ -9,11 +9,11 @@ using Test
         "eighth_power",
         "euclidean",
         "exponential",
+        "exponential_linear",
         "generalized_spiral",
         "hyperbolic_secant",
         "inverse_square_law",
         "leapfrog",
-        "linear_exponential",
         "neutron_star",
         "shell",
         "vacuum"

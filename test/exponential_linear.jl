@@ -10,9 +10,9 @@ function test()
     seed = Random.rand(1:(10^10))
     rng = Random.Xoshiro(seed)
 
-    @testset verbose = true "LinearExponential | Seed: $seed" begin
+    @testset verbose = true "ExponentialLinear | Seed: $seed" begin
         @testset verbose = true "R90" begin
-            @test isapprox(3.6095355704109156, Profiles.LinearExponential.r90())
+            @test isapprox(3.6095355704109156, Profiles.ExponentialLinear.r90())
         end
 
         @testset verbose = true "Particle density" begin
@@ -20,7 +20,7 @@ function test()
             r = Random.randn(rng, N)
 
             d = Vector{Float64}(undef, N)
-            Profiles.LinearExponential.particle_density!(d, r)
+            Profiles.ExponentialLinear.particle_density!(d, r)
 
             d_expected = Vector{Float64}(undef, N)
             for k in 1:N
@@ -35,7 +35,7 @@ function test()
             r = [0.2 * k for k in 1:N]
 
             n = Vector{Float64}(undef, N)
-            Profiles.LinearExponential.particle_number!(n, r)
+            Profiles.ExponentialLinear.particle_number!(n, r)
 
             n_expected = Vector{Float64}(undef, N)
             for k in 1:N
