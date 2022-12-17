@@ -6,6 +6,7 @@ using Test
 @testset verbose = true "All tests" begin
     all_tests = [
         "clump",
+        "eighth_power",
         "euclidean",
         "exponential",
         "generalized_spiral",
