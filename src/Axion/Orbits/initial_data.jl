@@ -7,7 +7,7 @@ using Random
 using StaticArrays
 
 include("./euclidean.jl")
-include("../shell.jl")
+include("./shell.jl")
 
 """
     set!(x, v, clump, Nshells, seed, write=true)
@@ -49,7 +49,9 @@ function set!(
     println("Particles in each shell of the AC:")
     println("$numbers")
 
-    sep = 3.6 / sqrt(findmax(numbers)[1])
+    max = findmax(numbers)
+    println(max)
+    sep = 3.6 * bounds[max[2]+1] / sqrt(max[1])#findmax([3.6 * bounds[k] / sqrt(numbers[k]) for k in eachindex(numbers)])[1]
     println("sep = $sep")
     println("dr = $dr")
 

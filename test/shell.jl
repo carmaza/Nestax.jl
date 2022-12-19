@@ -5,7 +5,7 @@ using Random
 using Test
 
 include("../src/Axion/Profiles/exponential.jl")
-include("../src/Axion/shell.jl")
+include("../src/Axion/Orbits/shell.jl")
 
 function test()
     seed = Random.rand(1:(10^10))
